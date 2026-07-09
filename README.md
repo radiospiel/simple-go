@@ -48,9 +48,7 @@ To consume `simple-go` as a git submodule rather than a vendored copy:
 2. **Set up imports to point at the submodule's packages.** Each package
    lives under `src/` in this repo, so import it as
    `github.com/radiospiel/simple-go/src/<package>` (e.g.
-   `github.com/radiospiel/simple-go/src/logger`). If the consuming repo
-   previously vendored these packages under a different import path, every
-   file importing them needs to be updated to the path above.
+   `github.com/radiospiel/simple-go/src/logger`).
 
 3. **Wire the module into `go.mod`** with a `replace` directive so builds
    always use the checked-out submodule content instead of fetching a
