@@ -36,29 +36,29 @@ Run `make help` for the full list of targets.
 
 ## How to integrate into another repo
 
-This is how `simple-go` is consumed by [`radiospiel/critic`](https://github.com/radiospiel/critic),
-as a git submodule rather than a vendored copy:
+To consume `simple-go` as a git submodule rather than a vendored copy:
 
-1. **Remove any vendored copy** of these packages from the consuming repo, if
-   one exists.
-
-2. **Add this repo as a git submodule**, at whatever path the consuming repo
+1. **Add this repo as a git submodule**, at whatever path the consuming repo
    wants the sources to live:
 
    ```sh
    git submodule add https://github.com/radiospiel/simple-go simple-go
    ```
 
-3. **Point imports at the new module.** Anything that used to import a
-   vendored copy (e.g. `github.com/<consumer>/<consumer>/simple-go/logger`)
-   needs to import `github.com/radiospiel/simple-go/src/logger` instead:
+2. **Set up imports to point at the submodule's packages.** Each package
+   lives under `src/` in this repo, so import it as
+   `github.com/radiospiel/simple-go/src/<package>` (e.g.
+   `github.com/radiospiel/simple-go/src/logger`):
 
-   ```sh
-   grep -rl "<old-import-prefix>/simple-go" --include=*.go . \
-     | xargs sed -i -E 's#<old-import-prefix>/simple-go/([a-zA-Z0-9_]+)#github.com/radiospiel/simple-go/src/\1#g'
+   ```go
+   import "github.com/radiospiel/simple-go/src/logger"
+
+   func main() {
+       logger.Info("starting up")
+   }
    ```
 
-4. **Wire the module into `go.mod`** with a `replace` directive so builds
+3. **Wire the module into `go.mod`** with a `replace` directive so builds
    always use the checked-out submodule content instead of fetching a
    published version:
 
@@ -73,14 +73,15 @@ as a git submodule rather than a vendored copy:
    via minimal version selection across all dependencies); `go mod tidy` will
    bump the `go` directive automatically if so.
 
-5. **Add a `scripts/sync-submodules` script** that initializes/updates the
-   submodule and pushes back any local changes made inside it — so edits
-   made to `simple-go` while working in the consuming repo aren't stranded —
-   and wire it in as a prerequisite of the consuming repo's `build` and
-   `test` Make targets (or equivalent).
+4. **Add a submodule-sync script** that initializes/updates the submodule
+   and pushes back any local changes made inside it — so edits made to
+   `simple-go` while working in the consuming repo aren't stranded — and
+   wire it in as a prerequisite of the consuming repo's build and test
+   steps (e.g. as a Makefile target dependency).
 
-6. **Make sure CI checks out submodules.** `actions/checkout` doesn't fetch
-   submodules by default; every job that builds Go code needs:
+5. **Make sure CI checks out submodules.** This step is specific to GitHub
+   Actions: `actions/checkout` doesn't fetch submodules by default, so every
+   job that builds Go code needs:
 
    ```yaml
    - uses: actions/checkout@v4
