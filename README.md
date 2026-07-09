@@ -48,7 +48,15 @@ To consume `simple-go` as a git submodule rather than a vendored copy:
 2. **Set up imports to point at the submodule's packages.** Each package
    lives under `src/` in this repo, so import it as
    `github.com/radiospiel/simple-go/src/<package>` (e.g.
-   `github.com/radiospiel/simple-go/src/logger`).
+   `github.com/radiospiel/simple-go/src/logger`):
+
+   ```go
+   import "github.com/radiospiel/simple-go/src/logger"
+
+   func main() {
+       logger.Info("starting up")
+   }
+   ```
 
 3. **Wire the module into `go.mod`** with a `replace` directive so builds
    always use the checked-out submodule content instead of fetching a
