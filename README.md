@@ -34,6 +34,69 @@ make docs    # regenerate docs/ from source comments
 
 Run `make help` for the full list of targets.
 
+## How to integrate into another repo
+
+This is how `simple-go` is consumed by [`radiospiel/critic`](https://github.com/radiospiel/critic),
+as a git submodule rather than a vendored copy:
+
+1. **Remove any vendored copy** of these packages from the consuming repo, if
+   one exists.
+
+2. **Add this repo as a git submodule**, at whatever path the consuming repo
+   wants the sources to live:
+
+   ```sh
+   git submodule add https://github.com/radiospiel/simple-go simple-go
+   ```
+
+3. **Point imports at the new module.** Anything that used to import a
+   vendored copy (e.g. `github.com/<consumer>/<consumer>/simple-go/logger`)
+   needs to import `github.com/radiospiel/simple-go/src/logger` instead:
+
+   ```sh
+   grep -rl "<old-import-prefix>/simple-go" --include=*.go . \
+     | xargs sed -i -E 's#<old-import-prefix>/simple-go/([a-zA-Z0-9_]+)#github.com/radiospiel/simple-go/src/\1#g'
+   ```
+
+4. **Wire the module into `go.mod`** with a `replace` directive so builds
+   always use the checked-out submodule content instead of fetching a
+   published version:
+
+   ```
+   require github.com/radiospiel/simple-go v0.0.0-00010101000000-000000000000
+
+   replace github.com/radiospiel/simple-go => ./simple-go
+   ```
+
+   Then run `go mod tidy`. Note that `simple-go` may require a newer Go
+   toolchain than the consuming repo's `go.mod` currently declares (checked
+   via minimal version selection across all dependencies); `go mod tidy` will
+   bump the `go` directive automatically if so.
+
+5. **Add a `scripts/sync-submodules` script** that initializes/updates the
+   submodule and pushes back any local changes made inside it — so edits
+   made to `simple-go` while working in the consuming repo aren't stranded —
+   and wire it in as a prerequisite of the consuming repo's `build` and
+   `test` Make targets (or equivalent).
+
+6. **Make sure CI checks out submodules.** `actions/checkout` doesn't fetch
+   submodules by default; every job that builds Go code needs:
+
+   ```yaml
+   - uses: actions/checkout@v4
+     with:
+       submodules: true
+   ```
+
+   Consider adding a CI check that fails if the submodule pin has drifted
+   from `simple-go`'s `main` branch, to catch stale references:
+
+   ```sh
+   cd simple-go
+   git fetch origin main
+   [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)" ] || exit 1
+   ```
+
 ## License
 
 BSD 3-Clause, see [LICENSE](LICENSE).
