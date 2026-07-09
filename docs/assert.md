@@ -3,7 +3,7 @@
 # assert
 
 ```go
-import "github.com/radiospiel/simple-go/assert"
+import "github.com/radiospiel/simple-go/src/assert"
 ```
 
 ## Index

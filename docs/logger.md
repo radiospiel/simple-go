@@ -3,7 +3,7 @@
 # logger
 
 ```go
-import "github.com/radiospiel/simple-go/logger"
+import "github.com/radiospiel/simple-go/src/logger"
 ```
 
 ## Index

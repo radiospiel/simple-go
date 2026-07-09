@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/radiospiel/simple-go/assert"
+	"github.com/radiospiel/simple-go/src/assert"
 )
 
 func TestRunExclusively_BasicExecution(t *testing.T) {

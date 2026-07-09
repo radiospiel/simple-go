@@ -5,7 +5,7 @@ import (
 	"slices"
 
 	"errors"
-	"github.com/radiospiel/simple-go/preconditions"
+	"github.com/radiospiel/simple-go/src/preconditions"
 	"sync"
 )
 

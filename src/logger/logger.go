@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/radiospiel/simple-go/ansi"
+	"github.com/radiospiel/simple-go/src/ansi"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 )

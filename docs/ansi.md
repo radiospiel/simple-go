@@ -3,7 +3,7 @@
 # ansi
 
 ```go
-import "github.com/radiospiel/simple-go/ansi"
+import "github.com/radiospiel/simple-go/src/ansi"
 ```
 
 ## Index

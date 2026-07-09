@@ -3,7 +3,7 @@
 # must
 
 ```go
-import "github.com/radiospiel/simple-go/must"
+import "github.com/radiospiel/simple-go/src/must"
 ```
 
 ## Index

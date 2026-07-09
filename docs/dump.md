@@ -3,7 +3,7 @@
 # dump
 
 ```go
-import "github.com/radiospiel/simple-go/dump"
+import "github.com/radiospiel/simple-go/src/dump"
 ```
 
 ## Index

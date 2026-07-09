@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/radiospiel/simple-go/logger"
+	"github.com/radiospiel/simple-go/src/logger"
 )
 
 // Check ensures that a condition is true.

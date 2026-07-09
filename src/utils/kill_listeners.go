@@ -8,7 +8,7 @@ import (
 	"time"
 
 	gopsnet "github.com/shirou/gopsutil/v3/net"
-	"github.com/radiospiel/simple-go/logger"
+	"github.com/radiospiel/simple-go/src/logger"
 	"github.com/samber/lo"
 )
 

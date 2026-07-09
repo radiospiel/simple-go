@@ -3,7 +3,7 @@
 # observable
 
 ```go
-import "github.com/radiospiel/simple-go/observable"
+import "github.com/radiospiel/simple-go/src/observable"
 ```
 
 Package observable provides a data wrapper for maps and lists with path\-based access and change subscriptions.
