@@ -3,7 +3,7 @@
 # preconditions
 
 ```go
-import "github.com/radiospiel/simple-go/preconditions"
+import "github.com/radiospiel/simple-go/src/preconditions"
 ```
 
 ## Index

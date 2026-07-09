@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/radiospiel/simple-go/assert"
-	. "github.com/radiospiel/simple-go/utils"
+	"github.com/radiospiel/simple-go/src/assert"
+	. "github.com/radiospiel/simple-go/src/utils"
 )
 
 func TestReverseEmpty(t *testing.T) {

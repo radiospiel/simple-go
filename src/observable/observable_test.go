@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/radiospiel/simple-go/assert"
+	"github.com/radiospiel/simple-go/src/assert"
 )
 
 func TestNew(t *testing.T) {

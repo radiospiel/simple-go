@@ -3,7 +3,7 @@
 # json
 
 ```go
-import "github.com/radiospiel/simple-go/json"
+import "github.com/radiospiel/simple-go/src/json"
 ```
 
 ## Index

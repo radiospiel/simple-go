@@ -9,8 +9,8 @@ import (
 
 	"runtime"
 
-	"github.com/radiospiel/simple-go/logger"
-	"github.com/radiospiel/simple-go/utils"
+	"github.com/radiospiel/simple-go/src/logger"
+	"github.com/radiospiel/simple-go/src/utils"
 	"github.com/samber/lo"
 )
 

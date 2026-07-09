@@ -30,6 +30,8 @@ tidy: ## Tidy go.mod/go.sum
 
 docs: ## Regenerate package documentation in docs/
 	go run github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest --output 'docs/{{.Dir}}.md' ./...
+	mv docs/src/*.md docs/
+	rmdir docs/src
 
 clean: ## Remove build artifacts
 	go clean ./...

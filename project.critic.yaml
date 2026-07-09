@@ -1,0 +1,28 @@
+project:
+  name: "simple-go"
+
+diffbase: main
+
+# File categories for the diff view.
+# Patterns follow git's glob matching rules:
+#   - "*" matches anything except "/"
+#   - "**" matches anything including "/"
+#   - "?" matches a single character except "/"
+#   - A leading "/" anchors the match to the repository root
+#   - A pattern without "/" matches the basename at any depth
+# See https://git-scm.com/docs/gitignore#_pattern_format
+categories:
+  - name: Source
+    patterns:
+      - "src/**/*.go"
+      - "!*_test.go"
+  - name: Tests
+    patterns:
+      - "*_test.go"
+  - name: Documentation
+    patterns:
+      - "docs/**/*.*"
+
+# When editor to use when clicking on a file in local mode?
+editor:
+  url: "goland://open?file={file}&line={line}"

@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/fsnotify/fsnotify"
-	"github.com/radiospiel/simple-go/logger"
+	"github.com/radiospiel/simple-go/src/logger"
 )
 
 // FileWatcher watches a single file for changes.

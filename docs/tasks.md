@@ -3,7 +3,7 @@
 # tasks
 
 ```go
-import "github.com/radiospiel/simple-go/tasks"
+import "github.com/radiospiel/simple-go/src/tasks"
 ```
 
 ## Index

@@ -3,7 +3,7 @@
 # conduit
 
 ```go
-import "github.com/radiospiel/simple-go/conduit"
+import "github.com/radiospiel/simple-go/src/conduit"
 ```
 
 ## Index

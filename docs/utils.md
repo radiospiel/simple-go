@@ -3,7 +3,7 @@
 # utils
 
 ```go
-import "github.com/radiospiel/simple-go/utils"
+import "github.com/radiospiel/simple-go/src/utils"
 ```
 
 ## Index

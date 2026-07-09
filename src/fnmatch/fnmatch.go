@@ -6,8 +6,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/radiospiel/simple-go/preconditions"
-	"github.com/radiospiel/simple-go/utils"
+	"github.com/radiospiel/simple-go/src/preconditions"
+	"github.com/radiospiel/simple-go/src/utils"
 )
 
 type Matcher interface {

@@ -3,7 +3,7 @@
 # fnmatch
 
 ```go
-import "github.com/radiospiel/simple-go/fnmatch"
+import "github.com/radiospiel/simple-go/src/fnmatch"
 ```
 
 Package fnmatch provides shell\-style pattern matching \(fnmatch\) functionality. Patterns are converted to regular expressions.

@@ -10,7 +10,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/radiospiel/simple-go/ansi"
+	"github.com/radiospiel/simple-go/src/ansi"
 	"golang.org/x/term"
 )
 

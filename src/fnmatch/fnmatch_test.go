@@ -3,7 +3,7 @@ package fnmatch
 import (
 	"testing"
 
-	"github.com/radiospiel/simple-go/assert"
+	"github.com/radiospiel/simple-go/src/assert"
 )
 
 func TestFnmatchToRegexp(t *testing.T) {
