@@ -37,3 +37,4 @@ Run `make help` for the full list of targets.
 ## License
 
 BSD 3-Clause, see [LICENSE](LICENSE).
+// sync-submodules test marker
